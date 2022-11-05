@@ -26,15 +26,24 @@
               Customer Portal
             </button>
           </a>
-          <a href="/update-sub">
-            <select name="price_id">
-              <option value="">Basic</option>
-              <option value="">Pro</option>
+          <form action="/list-subs" target="_blank" style="display: inline; margin-left: 40px;">
+            <select name="priceId">
+              <option value="price_1M0lk6LbtFbvovufA9UUGmvS">Basic</option>
+              <option value="price_1M0m4FLbtFbvovufkODkbfg9">Pro</option>
             </select>
-            <button style="width: 156px; display: inline">
+            <button style="width: 102px; display: inline;">
+              List Subs
+            </button>
+          </form>
+          <form action="/update-sub" target="_blank" style="display: inline; margin-left: 40px;">
+            <select name="priceId">
+              <option value="price_1M0lk6LbtFbvovufA9UUGmvS">Basic</option>
+              <option value="price_1M0m4FLbtFbvovufkODkbfg9">Pro</option>
+            </select>
+            <button style="width: 121px; display: inline;">
               Update Sub
             </button>
-          </a>
+          </form>
         </header>
 
 

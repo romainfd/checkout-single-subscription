@@ -44,6 +44,33 @@ app.get("/checkout-session", async (req, res) => {
   res.send(session);
 });
 
+// Get subscriptions linked to a price
+app.get("/list-subs", async (req, res) => {
+  const { priceId } = req.query;
+  const subscriptions = await stripe.subscriptions.list({
+    price: priceId,
+    limit: 10
+  });
+  res.send(subscriptions);
+});
+
+// Update the plan of a subscription
+app.get("/update-sub", async (req, res) => {
+  // ToDo: collect all subscriptions we want to update with API
+  const subId = process.env.SUB_ID
+  const { priceId } = req.query;
+  const subscription = await stripe.subscriptions.retrieve(subId);
+  const response = await stripe.subscriptions.update(subId, {
+    cancel_at_period_end: false,
+    proration_behavior: 'none',
+    items: [{
+      id: subscription.items.data[0].id,
+      price: priceId,
+    }]
+  })
+  res.send(response);
+});
+
 app.post("/create-checkout-session", async (req, res) => {
   const domainURL = process.env.DOMAIN;
   const { priceId, mode } = req.body;

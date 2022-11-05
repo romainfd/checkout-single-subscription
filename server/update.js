@@ -143,8 +143,6 @@ app.post("/webhook", async (req, res) => {
     console.log(`🔔  Payment received!`);
   }
 
-  console.log({ eventType, data });
-
   res.sendStatus(200);
 });
 

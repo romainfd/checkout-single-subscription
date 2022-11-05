@@ -19,35 +19,91 @@
       <div class="sr-main">
         <header class="sr-header">
           <div class="sr-header__logo"></div>
+          <!-- ToDo: implement automatic login with sessions
+               Ref.: https://stripe.com/docs/customer-management/integrate-customer-portal#redirect -->
+          <a href="https://billing.stripe.com/p/login/test_9AQ7vU2a88pC4ec8ww?prefilled_email=mail@example.com" target="_blank">
+            <button style="width: 156px; display: inline">
+              Customer Portal
+            </button>
+          </a>
+          <a href="/update-sub">
+            <select name="price_id">
+              <option value="">Basic</option>
+              <option value="">Pro</option>
+            </select>
+            <button style="width: 156px; display: inline">
+              Update Sub
+            </button>
+          </a>
         </header>
+
+
         <h1>Choose a collaboration plan</h1>
 
         <div class="price-table-container">
           <section>
             <form action="/create-checkout-session" method="POST">
+              <input type="hidden" value="subscription" name="mode">
+              <input type="hidden" id="basicSubPrice" name="priceId">
+              <img
+                      src="/img/starter.png"
+                      width="120"
+                      height="120"
+              />
+              <div class="name">Starter</div>
+              <div class="price">10€</div>
+              <div class="duration">per year</div>
+              <button id="basic-sub-plan-btn">Select</button>
+            </form>
+          </section>
+          <section>
+            <form action="/create-checkout-session" method="POST">
+              <input type="hidden" value="subscription" name="mode">
+              <input type="hidden" id="proSubPrice" name="priceId">
+              <img
+                      src="/img/professional.png"
+                      width="120"
+                      height="120"
+              />
+              <div class="name">Professional</div>
+              <div class="price">30€</div>
+              <div class="duration">per year</div>
+              <button id="pro-sub-plan-btn">Select</button>
+            </form>
+          </section>
+        </div>
+
+        <br>
+        <h1>Choose a one-off payment</h1>
+
+        <div class="price-table-container">
+          <section>
+            <form action="/create-checkout-session" method="POST">
+              <input type="hidden" value="payment" name="mode">
               <input type="hidden" id="basicPrice" name="priceId">
               <img
-                src="/img/starter.png"
-                width="120"
-                height="120"
-                />
+                      src="/img/starter.png"
+                      width="120"
+                      height="120"
+              />
               <div class="name">Starter</div>
-              <div class="price">$12</div>
-              <div class="duration">per month</div>
+              <div class="price">10€</div>
+              <div class="duration">for this year</div>
               <button id="basic-plan-btn">Select</button>
             </form>
           </section>
           <section>
             <form action="/create-checkout-session" method="POST">
+              <input type="hidden" value="payment" name="mode">
               <input type="hidden" id="proPrice" name="priceId">
               <img
-                src="/img/professional.png"
-                width="120"
-                height="120"
-                />
+                      src="/img/professional.png"
+                      width="120"
+                      height="120"
+              />
               <div class="name">Professional</div>
-              <div class="price">$18</div>
-              <div class="duration">per month</div>
+              <div class="price">30€</div>
+              <div class="duration">for this year</div>
               <button id="pro-plan-btn">Select</button>
             </form>
           </section>

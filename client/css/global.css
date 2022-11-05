@@ -88,7 +88,6 @@ h4 {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 100%;
 }
 .sr-legal-text {
   color: var(--gray-light);
@@ -389,6 +388,7 @@ pre {
 .price-table-container {
   display: flex;
   box-shadow: 0 2px 5px 0 rgba(60, 66, 87, .08), 0 1px 1px 0 rgba(0, 0, 0, .12);
+  margin: 5px 0;
 }
 
 .price-table-container section {
